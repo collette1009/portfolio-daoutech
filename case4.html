@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case 4. 운영 자동화 + 생성형 AI 실무 활용 | 오희은 포트폴리오</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --white:#FFFFFF; --bg-soft:#F7F7F8; --border:#E5E5E6; --text-1:#141416; --text-2:#50505A; --text-3:#909098; --charcoal:#282D32; --charcoal-a:rgba(40,45,50,0.07); --sh-md:0 4px 20px rgba(0,0,0,0.09); --r:10px; --r-sm:6px; --ease:cubic-bezier(.4,0,.2,1); --t:0.22s; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-1); background: var(--white); -webkit-font-smoothing: antialiased; line-height: 1.7; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 28px; }
+    .hr { width: 100%; height: 1px; background: var(--border); }
+    header { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.88); backdrop-filter: blur(16px); border-bottom: 1px solid transparent; transition: border-color var(--t) var(--ease); }
+    header.on { border-bottom-color: var(--border); }
+    .h-inner { max-width: 980px; margin: 0 auto; padding: 0 28px; height: 62px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 16px; font-weight: 800; color: var(--charcoal); text-decoration: none; letter-spacing: -0.02em; }
+    nav a { font-size: 14px; font-weight: 500; color: var(--text-2); text-decoration: none; transition: color var(--t); }
+    nav a:hover { color: var(--charcoal); }
+    .case-hero { padding: 72px 0 56px; border-bottom: 1px solid var(--border); }
+    .case-hero-nav { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-2); text-decoration: none; margin-bottom: 32px; transition: color var(--t); }
+    .case-hero-nav:hover { color: var(--charcoal); }
+    .case-hero-title { font-size: clamp(26px, 4vw, 36px); font-weight: 800; letter-spacing: -0.03em; color: var(--charcoal); line-height: 1.2; margin-bottom: 20px; max-width: 720px; }
+    .case-hero-summary { font-size: 16px; color: var(--text-2); line-height: 1.85; max-width: 720px; padding: 20px 24px; background: var(--bg-soft); border-left: 3px solid var(--charcoal); border-radius: var(--r-sm); }
+    .case-hero-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+    .meta-chip { background: var(--charcoal-a); padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 600; color: var(--charcoal); }
+    .sec { padding: 60px 0; } .sec-alt { background: var(--bg-soft); }
+    .sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 10px; }
+    .sec-title { font-size: clamp(22px, 3vw, 28px); font-weight: 700; letter-spacing: -0.025em; color: var(--charcoal); line-height: 1.3; margin-bottom: 32px; }
+    .did-list { display: flex; flex-direction: column; gap: 16px; }
+    .did-item { padding: 26px 28px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r); }
+    .did-number { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--charcoal); margin-bottom: 10px; background: var(--charcoal-a); padding: 3px 12px; border-radius: 6px; }
+    .did-title { font-size: 16px; font-weight: 700; color: var(--text-1); margin-bottom: 8px; letter-spacing: -0.01em; }
+    .did-desc { font-size: 15px; color: var(--text-2); line-height: 1.8; }
+    .did-desc strong { color: var(--text-1); font-weight: 600; }
+    .ai-table { width: 100%; border: 1.5px solid var(--border); border-radius: var(--r); overflow: hidden; border-collapse: collapse; }
+    .ai-table th { background: var(--charcoal); color: var(--white); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 20px; text-align: left; }
+    .ai-table td { padding: 14px 20px; font-size: 14px; color: var(--text-2); border-bottom: 1px solid var(--border); line-height: 1.7; }
+    .ai-table tr:last-child td { border-bottom: none; }
+    .ai-table td:first-child { font-weight: 600; color: var(--text-1); white-space: nowrap; width: 200px; }
+    .outcome-list { display: flex; flex-direction: column; gap: 14px; }
+    .outcome-item { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--text-2); line-height: 1.8; }
+    .outcome-item::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--charcoal); flex-shrink: 0; margin-top: 10px; }
+    .outcome-item strong { color: var(--text-1); font-weight: 600; }
+    .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+    .metric-box { padding: 24px 28px; background: var(--charcoal); border-radius: var(--r); }
+    .metric-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 8px; }
+    .metric-value { font-size: 28px; font-weight: 800; color: var(--white); letter-spacing: -0.03em; line-height: 1.2; }
+    .metric-sub { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 6px; }
+    .nav-btns { display: flex; justify-content: space-between; align-items: center; padding: 40px 0; }
+    .nav-btn { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--text-2); text-decoration: none; padding: 10px 20px; border: 1.5px solid var(--border); border-radius: var(--r-sm); transition: all var(--t) var(--ease); }
+    .nav-btn:hover { color: var(--charcoal); border-color: var(--charcoal); }
+    .sec-body { font-size: 15px; color: var(--text-2); line-height: 1.9; max-width: 720px; }
+    .sec-body strong { color: var(--text-1); font-weight: 600; }
+    .evidence-box { border: 1.5px solid var(--border); border-radius: var(--r); overflow: hidden; max-width: 720px; }
+    .evidence-header { background: var(--charcoal); padding: 16px 24px; }
+    .evidence-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 4px; }
+    .evidence-title { font-size: 15px; font-weight: 700; color: var(--white); }
+    .evidence-body { padding: 24px; background: var(--white); }
+    .evidence-desc { font-size: 14px; color: var(--text-2); line-height: 1.8; margin-bottom: 20px; }
+    .evidence-img { width: 100%; border-radius: var(--r-sm); border: 1px solid var(--border); display: block; }
+    .evidence-img-placeholder { width: 100%; background: var(--bg-soft); border-radius: var(--r-sm); border: 1.5px dashed var(--border); display: flex; align-items: center; justify-content: center; min-height: 220px; }
+    .evidence-caption { font-size: 12px; color: var(--text-3); line-height: 1.7; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+<header id="hd">
+  <div class="h-inner">
+    <a href="index.html" class="logo">오희은</a>
+    <nav><a href="index.html">← 포트폴리오 홈</a></nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="case-hero">
+    <a href="index.html" class="case-hero-nav">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      포트폴리오 홈으로
+    </a>
+    <h1 class="case-hero-title">재배송·반품 반복 입력 8→2단계 자동화 + AI 기반 기준 문서화</h1>
+    <div class="case-hero-summary">
+      반복 입력 작업을 Chrome Extension으로 자동화해 귀책 기준값 오류를 구조적으로 차단했습니다. 생성형 AI는 FAQ 구조화, 응대 기준 초안 작성, 계약서 분석, 정책 문구 검토 보조에 실무 활용했습니다.
+    </div>
+    <div class="case-hero-meta">
+      <span class="meta-chip">초록마을</span>
+      <span class="meta-chip">Chrome Extension Improvement</span>
+      <span class="meta-chip">Chrome Extension Development</span>
+      <span class="meta-chip">AI Integration</span>
+      <span class="meta-chip">생성형 AI 실무 활용</span>
+      <span class="meta-chip">반복 업무 구조적 축소</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<section class="sec sec-alt">
+  <div class="wrap">
+    <p class="sec-eyebrow">Automation</p>
+    <h2 class="sec-title">Chrome Extension — 반복 입력 8→2단계 자동화</h2>
+    <div class="did-list">
+      <div class="did-item">
+        <div class="did-number">문제</div>
+        <div class="did-title">재배송·반품 처리 시 반복 입력과 귀책 기준값 오입력</div>
+        <div class="did-desc">
+          재배송·반품 처리는 매 건마다 CRM에서 동일한 정보를 반복 입력하는 구조였습니다. 단계가 많아 처리 시간이 길었고, <strong>수동 입력 과정에서 귀책 기준값 오입력 리스크</strong>가 있었습니다.
+        </div>
+      </div>
+      <div class="did-item">
+        <div class="did-number">해결</div>
+        <div class="did-title">Claude를 활용해 Chrome Extension을 직접 구성하고 실무에 적용</div>
+        <div class="did-desc">
+          Claude를 활용해 Chrome Extension을 직접 구현했습니다. 반복 입력 단계를 자동화하고, <strong>귀책 기준값을 사전 정의된 기준에 따라 자동 반영</strong>해 오입력을 구조적으로 차단했습니다.
+          <strong>처리 단계가 8단계에서 2단계로 축소</strong>됐으며, 기준값 오류 없이 일관된 처리가 가능해졌습니다.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<section class="sec">
+  <div class="wrap">
+    <p class="sec-eyebrow">AI Usage</p>
+    <h2 class="sec-title">생성형 AI — 운영 실무의 파트너로 활용</h2>
+    <p style="font-size:15px; color:var(--text-2); line-height:1.8; margin-bottom:28px;">
+      생성형 AI를 단순 답변 생성이 아니라, <strong>운영 기준을 만들고 문서화하고 검토하는 실무 과정</strong>에 직접 활용했습니다.<br><br>
+      Claude/GPT는 초안 작성, 문서 구조화, 자동화 로직 설계에 활용했고, <strong>NotebookLM은 회사 문서·약관·계약서 원문을 업로드해 조항과 근거를 확인하는 검증 도구</strong>로 활용했습니다. 최종 문구와 기준은 실제 운영 흐름과 내부 책임 범위에 맞춰 사람이 수정했습니다.
+    </p>
+    <table class="ai-table">
+      <thead>
+        <tr>
+          <th>활용 영역</th>
+          <th>구체적 활용 방식</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>FAQ 구조화</td>
+          <td>반복 VOC 유형별로 FAQ 초안을 구조화하고, 고객 언어와 운영 기준 사이의 표현 간극을 줄이는 문구 검토에 활용</td>
+        </tr>
+        <tr>
+          <td>응대 기준 초안 작성</td>
+          <td>새로운 이슈 유형 발생 시 응대 기준 초안을 빠르게 생성하고, 실제 케이스에 맞게 수정해 SOP에 반영</td>
+        </tr>
+        <tr>
+          <td>계약서·약관 분석</td>
+          <td>NotebookLM에 원문을 업로드해 관련 조항과 근거를 확인하고, Claude/GPT 초안과 교차 검토해 내부 기준과 맞지 않는 표현을 조정</td>
+        </tr>
+        <tr>
+          <td>정책 문구 검토</td>
+          <td>GPT/Claude로 문구 초안을 정리한 뒤, NotebookLM으로 약관·정책 원문 근거를 재확인해 확정 표현과 책임 주체 표현을 조정</td>
+        </tr>
+        <tr>
+          <td>업무 보고 자동화</td>
+          <td>일일 운영 현황 집계와 보고 초안 작성에 AI를 보조 도구로 활용해 반복 작업 시간 단축</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<section class="sec sec-alt">
+  <div class="wrap">
+    <p class="sec-eyebrow">Outcome</p>
+    <h2 class="sec-title">결과</h2>
+    <div class="outcome-list">
+      <div class="outcome-item"><strong>반복 입력 8→2단계</strong> — 처리 시간 단축, 귀책 기준값 오입력 구조적 차단.</div>
+      <div class="outcome-item"><str
